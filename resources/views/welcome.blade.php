@@ -70,7 +70,7 @@
                               <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav ms-auto">
                                   <li class="nav-item">
-                                    <a class="nav-link text-white" href="#">Home</a>
+                                    <a class="nav-link text-white" href="{{ route('welcome') }}">Home</a>
                                   </li>
                                   <li class="nav-item">
                                     <a class="nav-link text-white" href="#">Menu</a>
@@ -96,8 +96,12 @@
                     <h1 class="text-white py-3 mt-n5">JILID ENAM</h1>
                     <h5 class="text-white h6">Join us as we continue to explore new flavors and innovate our brewing techniques. At Jilid Enam, every cup tells a story of dedication, expertise, and a relentless pursuit of excellence.
                     </h5>
-                    <button class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md">Login</button>
-                    <button class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md">Register</button>
+
+
+
+                    <a href="{{ route('loginmethod') }}" class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md d-inline-block">Login</a>
+                    <a href="{{ route('register') }}" class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md d-inline-block">Register</a>
+
                 </div>
             </div>
 
@@ -279,7 +283,7 @@
             <div class="col-md-12">
                 <ul class="list-inline" style="font-size: 1rem;">
                     <li class="list-inline-item">
-                        <a href="#" style="color: white; text-decoration: none;">Home</a>
+                        <a href="{{ route('welcome') }}" style="color: white; text-decoration: none;">Home</a>
                     </li>
                     <li class="list-inline-item">
                         <a href="#" style="color: white; text-decoration: none;">Menu</a>

@@ -22,7 +22,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('softui/assets/img/background-jilid.png') no-repeat center center;
+            background: url('{{ asset('softui/assets/img/background-jilid.png') }}') no-repeat center center;
             background-size: 50% 80%;
         }
 
@@ -32,19 +32,59 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-            width: 60%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
         }
 
         .overlay-form .form-control {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .navbar {
             z-index: 1000;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #000;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #A37E2D;
+        }
+
+        footer {
+            background-color: #A37E2D;
+            color: white;
+            padding: 20px 0;
+        }
+
+        footer h6 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        footer .hr {
+            background-color: white;
+            height: 1px;
+        }
+
+        footer .list-inline-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        footer .list-inline-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer .fab {
+            font-size: 2rem;
         }
     </style>
 </head>
@@ -59,19 +99,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="{{ route('welcome') }}">Home</a>
+                        <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="#">Menu</a>
+                        <a class="nav-link" href="#">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="#">Login</a>
+                        <a class="nav-link" href="#">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="#">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="#">Events</a>
+                        <a class="nav-link" href="#">Events</a>
                     </li>
                 </ul>
             </div>
@@ -82,79 +122,52 @@
     <!-- Content Section -->
     <div class="overlay-container">
         <div class="overlay-form">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="mb-3">
-                    <label for="custemail" class="form-label">{{ __('Email Address') }}</label>
-                    <input id="custemail" type="email" class="form-control @error('custemail') is-invalid @enderror" name="custemail" value="{{ old('custemail') }}" required autocomplete="email" autofocus>
-                    @error('custemail')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="custpassword" class="form-label">{{ __('Password') }}</label>
-                    <input id="custpassword" type="password" class="form-control @error('custpassword') is-invalid @enderror" name="custpassword" required autocomplete="current-password">
-                    @error('custpassword')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
-                    </div>
-                </div>
-                <div class="mb-0">
-                    <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
-                </div>
-            </form>
-
+            <h2>Login as:</h2>
+            <a href="{{ route('login') }}" class="btn btn-primary btn-lg btn-block mt-3">Staff</a>
+            <a href="{{ route('login') }}" class="btn btn-primary btn-lg btn-block mt-3">User</a>
+            <p class="mt-4">New user? <a href="{{ route('register') }}">Register as customer</a></p>
         </div>
     </div>
     <!-- End Content Section -->
 
     <!-- Footer -->
-    <footer class="footer pt-5 mt-5" style="background-color: #A37E2D">
+    <footer class="footer pt-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h6 style="color: white; font-size: 1.5rem; font-weight: 500; margin-bottom: 0;">ENJOY WELCOMING<br>ATMOSPHERE & MOMENTS<br>OF DELIGHT</h6>
+                    <h6>ENJOY WELCOMING<br>ATMOSPHERE & MOMENTS<br>OF DELIGHT</h6>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-12">
-                    <div class="hr" style="width: 100%; height: 1px; background-color: white;"></div>
+                    <div class="hr"></div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-12">
-                    <ul class="list-inline" style="font-size: 1rem;">
+                    <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="{{ route('welcome') }}" style="color: white; text-decoration: none;">Home</a>
+                            <a href="{{ route('welcome') }}">Home</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" style="color: white; text-decoration: none;">Menu</a>
+                            <a href="#">Menu</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" style="color: white; text-decoration: none;">Login</a>
+                            <a href="#">Login</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" style="color: white; text-decoration: none;">Contact</a>
+                            <a href="#">Contact</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" style="color: white; text-decoration: none;">Events</a>
+                            <a href="#">Events</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-12">
-                    <a href="#" style="text-decoration: none;">
-                        <i class="fab fa-instagram" style="font-size: 2rem; color: white;"></i>
+                <div class="col-md-12 text-center">
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
