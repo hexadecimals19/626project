@@ -76,7 +76,7 @@
                                     <a class="nav-link text-white" href="#">Menu</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link text-white" href="#">Login</a>
+                                    <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
                                   </li>
                                   <li class="nav-item">
                                     <a class="nav-link text-white" href="#">Contact</a>
@@ -99,7 +99,7 @@
 
 
 
-                    <a href="{{ route('loginmethod') }}" class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md d-inline-block">Login</a>
+                    <a href="{{ route('login') }}" class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md d-inline-block">Login</a>
                     <a href="{{ route('register') }}" class="bg-danger border-0 px-3 py-2 font-weight-bold text-white border-radius-md d-inline-block">Register</a>
 
                 </div>

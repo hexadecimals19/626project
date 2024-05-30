@@ -26,31 +26,42 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'custemail' => 'required|email',
-            'custpassword' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'custemail' => 'required|email',
+        'custpassword' => 'required|string',
+    ]);
 
-        $credentials = [
-            'custemail' => $request->custemail,
-            'password' => $request->custpassword,
-        ];
+    $credentials = [
+        'custemail' => $request->custemail,
+        'password' => $request->custpassword,
+    ];
 
-        Log::info('Attempting login with credentials:', $credentials);
+    Log::info('Attempting login with credentials:', $credentials);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            Log::info('Login successful for email: ' . $request->custemail);
+    if (Auth::attempt($credentials, $request->filled('remember'))) {
+        $user = Auth::user();
+
+        if ($user->usertype === 'admin') {
+            Log::info('Admin login successful for email: ' . $request->custemail);
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->route('dashboard'); // Assuming the route name for the dashboard is 'dashboard'
         }
 
-        Log::warning('Login failed for email: ' . $request->custemail);
-
-        throw ValidationException::withMessages([
-            'custemail' => [trans('auth.failed')],
-        ]);
+        Log::info('Login successful for email: ' . $request->custemail);
+        $request->session()->regenerate();
+        return redirect()->intended(route('home'));
     }
+
+    Log::warning('Login failed for email: ' . $request->custemail);
+
+    throw ValidationException::withMessages([
+        'custemail' => [trans('auth.failed')],
+    ]);
+}
+
+
+
 
     public function logout(Request $request)
     {

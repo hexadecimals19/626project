@@ -11,7 +11,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     // Define the custom primary key
-    protected $primaryKey = 'custid';
+    protected $primaryKey = 'custid'; // Define the custom primary key
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'custname',
         'custemail',
+        'usertype',
         'custpassword',
         'custphone',
         'custaddress',

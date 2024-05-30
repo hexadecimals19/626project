@@ -15,6 +15,7 @@ return new class extends Migration
             $table -> increments ('custid');
             $table->string('custname');
             $table->string('custemail')->unique();
+            $table->string('usertype')->default('user');
             $table->string('custpassword');
             $table->string('custphone');
             $table->string('custaddress');
